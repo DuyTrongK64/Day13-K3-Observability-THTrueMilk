@@ -23,18 +23,20 @@
 
 ## 4. Prompt versioning
 
-- Prompt name:
-- Version/label baseline:
-- Version/label candidate:
+- Prompt name: `day13-chat`
+- Version/label baseline: `v1` / `baseline`
+- Version/label candidate: `v2` / `candidate`
 - Trace ID của mỗi version:
-- Bằng chứng đổi label hoặc rollback:
+  - Trace ID (v1 / production): `eed5637455c687df967ed86140d1580a`
+  - Trace ID (v2 / candidate): `(Điền thêm ID của trace candidate từ danh sách bên trái)`
+- Bằng chứng đổi label hoặc rollback: ![Rollback Evidence](evidence/cp2-rollback.png)
 
 ## 5. Dashboard, SLO và alerts
 
-- Kết quả `validate_dashboard.py`:
-- Evidence dashboard:
-- SLO đã chọn và lý do:
-- Alert rules và runbook:
+- Kết quả `validate_dashboard.py`: HỢP LỆ: 6/6 panel có trong dashboard contract.
+- Evidence dashboard: ![Dashboard](evidence/cp2-dashboard.png)
+- SLO đã chọn và lý do: Threshold p95 latency <= 3000ms để đảm bảo trải nghiệm real-time của Chatbot, Error Rate <= 2% để đảm bảo RAG không bị lỗi.
+- Alert rules và runbook: Khi P95 > 3000ms, alert trigger. Runbook: Kiểm tra DB vector search duration hoặc tải của LLM endpoint.
 
 ## 6. Điều tra challenge
 
